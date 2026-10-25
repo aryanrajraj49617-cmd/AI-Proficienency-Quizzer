@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "Learner": {
+      "title": "Learner",
+      "description": "Registered learner account and performance metrics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "pinOrPassword": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastActive": { "type": "string" },
+        "streakDays": { "type": "number" },
+        "bestScore": { "type": "number" },
+        "totalAttempts": { "type": "number" }
+      },
+      "required": ["id", "name", "pinOrPassword", "createdAt"]
+    },
+    "QuizAttempt": {
+      "title": "QuizAttempt",
+      "description": "Completed quiz attempt record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "learnerId": { "type": "string" },
+        "learnerName": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "totalQuestions": { "type": "number" },
+        "correctCount": { "type": "number" },
+        "percentage": { "type": "number" },
+        "proficiencyLevel": { "type": "string" },
+        "timeTakenSeconds": { "type": "number" }
+      },
+      "required": ["id", "learnerId", "learnerName", "percentage", "proficiencyLevel"]
+    },
+    "Question": {
+      "title": "Question",
+      "description": "Assessment question bank item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "topic": { "type": "string" },
+        "difficulty": { "type": "string" },
+        "type": { "type": "string" },
+        "question": { "type": "string" },
+        "correctIndex": { "type": "number" },
+        "explanation": { "type": "string" }
+      },
+      "required": ["id", "topic", "difficulty", "type", "question", "correctIndex", "explanation"]
+    }
+  },
+  "firestore": {
+    "/learners/{learnerId}": {
+      "schema": "Learner",
+      "description": "Learner accounts"
+    },
+    "/quiz_attempts/{attemptId}": {
+      "schema": "QuizAttempt",
+      "description": "Quiz attempts submitted by learners"
+    },
+    "/questions/{questionId}": {
+      "schema": "Question",
+      "description": "Question bank items"
+    }
+  }
+}

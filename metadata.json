@@ -1,0 +1,6 @@
+{
+  "name": "AI Proficiency Quizzer",
+  "description": "Comprehensive learning-assessment platform for evaluating AI proficiency with randomized quizzes, personalized analytics, streak tracking, downloadable certificates, and admin reporting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

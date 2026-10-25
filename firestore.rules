@@ -1,0 +1,24 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Learners collection: accessible for assessment registration and multi-device syncing
+    match /learners/{learnerId} {
+      allow read, write: if true;
+    }
+
+    // Quiz attempts collection: live submissions visible to admin and learners
+    match /quiz_attempts/{attemptId} {
+      allow read, write: if true;
+    }
+
+    // Questions bank: accessible for quizzes and admin customizations
+    match /questions/{questionId} {
+      allow read, write: if true;
+    }
+
+    // Default catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
